@@ -16,17 +16,17 @@ export enum Key {
 }
 
 export function keyCodeToKey(key: string): Key {
-  switch(key) {
-    case 'Down': 
-    case 'ArrowDown': 
+  switch (key) {
+    case 'Down':
+    case 'ArrowDown':
       return Key.DOWN;
-    case 'Up': 
-    case 'ArrowUp': 
+    case 'Up':
+    case 'ArrowUp':
       return Key.UP;
-    case 'Right': 
-    case 'ArrowRight': 
+    case 'Right':
+    case 'ArrowRight':
       return Key.RIGHT;
-    case 'Left': 
+    case 'Left':
     case 'ArrowLeft':
       return Key.LEFT;
     case ' ':
@@ -35,21 +35,27 @@ export function keyCodeToKey(key: string): Key {
     case 'Escape':
       return Key.ESCAPE;
     case 'a':
+    case 'A':
       return Key.A;
     case 's':
+    case 'S':
       return Key.S;
     case 'd':
+    case 'D':
       return Key.D;
-    case 'w': 
+    case 'w':
+    case 'W':
       return Key.W;
     case 'r':
+    case 'R':
       return Key.R;
-    case 'q': 
+    case 'q':
+    case 'Q':
       return Key.Q;
     case 'Enter':
       return Key.ENTER;
     default:
-      console.warn(`Unhandled key: ${key}.`); 
+      console.warn(`Unhandled key: ${key}.`);
       return Key.INVALID;
   }
 }

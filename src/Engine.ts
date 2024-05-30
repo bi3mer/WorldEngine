@@ -20,11 +20,11 @@ export class Engine {
   constructor() {
     window.addEventListener('keydown', (e: KeyboardEvent) => {
       const k = keyCodeToKey(e.key);
-      if(k == Key.DOWN || k == Key.UP || k == Key.LEFT || k == Key.RIGHT) {
+      if (k == Key.DOWN || k == Key.UP || k == Key.LEFT || k == Key.RIGHT) {
         e.preventDefault();
       }
-      
-      if(!this.keyDown.has(k)) {
+
+      if (!this.keyDown.has(k)) {
         this.keyDown.add(k)
       }
 
@@ -60,12 +60,12 @@ export class Engine {
   }
 
   public start(): void {
-    let oldTimeStamp : number;
-    let fps : number;
+    let oldTimeStamp: number;
+    let fps: number;
 
     this.scenes[this.sceneIndex].onEnter(this);
 
-    const gameLoop = (timeStamp : number) => {
+    const gameLoop = (timeStamp: number) => {
       // Calculate the number of seconds passed since the last frame
       this.delta = (timeStamp - oldTimeStamp) / 1000;
       oldTimeStamp = timeStamp;
@@ -106,7 +106,7 @@ export class Engine {
     }
   }
 
-  public setFont(size: number|undefined = undefined, font: string|undefined = undefined) {
+  public setFont(size: number | undefined = undefined, font: string | undefined = undefined) {
     if (size != undefined) {
       this.fontSize = size;
     }
@@ -119,7 +119,7 @@ export class Engine {
   }
 
   public drawRectOutline(
-    x: number, 
+    x: number,
     y: number,
     width: number,
     height: number,
@@ -128,37 +128,37 @@ export class Engine {
 
     this.ctx.lineWidth = strokeWidth;
     this.ctx.strokeStyle = color;
-    this.ctx.strokeRect(x, y, width, height); 
+    this.ctx.strokeRect(x, y, width, height);
   }
 
   public drawRect(
-    x: number, 
+    x: number,
     y: number,
     width: number,
     height: number,
     color: string): void {
 
     this.ctx.fillStyle = color;
-    this.ctx.fillRect(x, y, width, height); 
+    this.ctx.fillRect(x, y, width, height);
   }
 
   public drawText(
-    x: number, 
-    y: number, 
-    char: string, 
-    fontColor='white',
-    background=false,
-    backgroundColor="white"): void {
+    x: number,
+    y: number,
+    char: string,
+    fontColor = 'white',
+    background = false,
+    backgroundColor = "white"): void {
     // background
     if (background) {
       const txtMeasure = this.ctx.measureText(char);
       // this.ctx.fillRect(
       //  
       this.drawRect(
-        x-1.0, 
-        y - this.fontSize*0.7,
-        txtMeasure.width*1.1, 
-        this.fontSize*1.2,
+        x - 1.0,
+        y - this.fontSize * 0.7,
+        txtMeasure.width * 1.1,
+        this.fontSize * 1.2,
         backgroundColor);
     }
 
@@ -166,6 +166,4 @@ export class Engine {
     this.ctx.fillStyle = fontColor;
     this.ctx.fillText(char, x, y);
   }
-
-  
 }
