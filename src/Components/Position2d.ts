@@ -5,8 +5,11 @@ export class Position2d extends Component {
   private oldY: number;
   private changed = false;
 
-  constructor(private x: number, private y: number) { 
-    super(); 
+  constructor(private x: number, private y: number) {
+    super();
+
+    this.x = x;
+    this.y = y;
 
     this.oldX = x;
     this.oldY = y;
@@ -18,12 +21,12 @@ export class Position2d extends Component {
 
   // Cantor pairing function
   public hash(): number {
-    return ((this.x + this.y)*(this.x + this.y + 1)/2) + this.y;
+    return ((this.x + this.y) * (this.x + this.y + 1) / 2) + this.y;
   }
 
   // Cantor pairing function
   public oldHash(): number {
-    return ((this.oldX + this.oldY)*(this.oldX + this.oldY + 1)/2) + this.oldY;
+    return ((this.oldX + this.oldY) * (this.oldX + this.oldY + 1) / 2) + this.oldY;
   }
 
   public updated(): boolean {
@@ -32,14 +35,14 @@ export class Position2d extends Component {
 
   public set(x: number, y: number) {
     this.changed = true;
-    
+
     this.x = x;
     this.y = y;
   }
 
   public setPos(pos: Position2d) {
     this.changed = true;
-    
+
     this.x = pos.x;
     this.y = pos.y;
   }
