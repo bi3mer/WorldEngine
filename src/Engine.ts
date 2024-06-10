@@ -152,13 +152,11 @@ export class Engine {
     // background
     if (background) {
       const txtMeasure = this.ctx.measureText(char);
-      // this.ctx.fillRect(
-      //  
       this.drawRect(
         x - 1.0,
         y - this.fontSize * 0.7,
-        txtMeasure.width * 1.1,
-        this.fontSize * 1.2,
+        txtMeasure.width,
+        this.fontSize - 2,
         backgroundColor);
     }
 
