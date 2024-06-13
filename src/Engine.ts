@@ -46,6 +46,10 @@ export class Engine {
     this.delta = 0;
   }
 
+  public isKeyDown(key: Key): boolean {
+    return this.keyDown.has(key);
+  }
+
   public setBB(key: string, val: any): void {
     this.blackBoard.set(key, val);
   }
