@@ -16,6 +16,7 @@ export class Engine {
   private blackBoard: Map<string, any> = new Map<string, any>();
   private fontSize = 20;
   private font = 'Courier New'
+  private running = true;
 
   constructor() {
     window.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -95,7 +96,10 @@ export class Engine {
       }
 
       this.keyPress.clear();
-      window.requestAnimationFrame(gameLoop);
+
+      if (this.running) {
+        window.requestAnimationFrame(gameLoop);
+      }
     }
 
     window.requestAnimationFrame(gameLoop);
@@ -167,5 +171,9 @@ export class Engine {
     // text
     this.ctx.fillStyle = fontColor;
     this.ctx.fillText(char, x, y);
+  }
+
+  public shutoff(): void {
+    this.running = false;
   }
 }
